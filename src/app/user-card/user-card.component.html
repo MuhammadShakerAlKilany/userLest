@@ -1,0 +1,16 @@
+<div class="card " [ngClass]="{'border-black': user.active}"  style="width: 18rem;">
+    <img [src]="user.image" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title" *ngIf="user.active; else elseTemp " >{{user.username | uppercase }}</h5>
+      <ng-template #elseTemp>{{user.username}}</ng-template>
+      
+      <p class="card-text">Birth Date : {{user.birthDate | date}}</p>
+      <p class="card-text">phone : {{user.phone}}</p>
+      <p class="card-text">email : {{user.email}}</p>
+      <div class="rounded-circle"></div>
+      <fa-icon [icon]="faStar" [ngStyle]="{'color': user.is_verified?'green':'red'}" ></fa-icon>
+      <!-- [ngStyle]="'color'=user.is_verified?'green':'red'" -->
+      <!-- [style.color]="user.is_verified?'green':'red'"  -->
+      <input type="button" value="btn" (click)="active(user.id)">
+    </div>
+</div>
